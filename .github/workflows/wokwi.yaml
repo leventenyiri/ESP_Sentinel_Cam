@@ -18,6 +18,23 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+      - name: Build Test Application with ESP-IDF
+        uses: espressif/esp-idf-ci-action@v1
+        with:
+          esp_idf_version: "latest" # latest is the default version
+          target: ${{ matrix.espidf_target }}
+          path: 'test_app'
+      - name: Upload files to artifacts for run-target job
+        uses: actions/upload-artifact@v4
+        with:
+          name: test_app_bin_${{ matrix.espidf_target }}
+          path: |
+            test_app/build/bootloader/bootloader.bin
+            test_app/build/partition_table/partition-table.bin
+            test_app/build/example_test_app.bin
+            test_app/build/example_test_app.elf
+            test_app/build/flasher_args.json
+          if-no-files-found: error
       - name: Download files / artifacts from build job
         uses: actions/download-artifact@v4
         with:
