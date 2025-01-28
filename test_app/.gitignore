@@ -1,5 +1,0 @@
-sdkconfig
-sdkconfig.old
-build/
-__pycache__
-.pytest_cache

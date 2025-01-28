@@ -2,5 +2,5 @@
 .vscode
 **/build
 **/dependencies.lock
-main/secret.h
+**/secret.h
 **/managed_components
