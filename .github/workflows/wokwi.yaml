@@ -3,7 +3,7 @@ name: Run Test Application (Wokwi)
 on:
   workflow_call:
     secrets:
-      WOKWI_TOKEN:
+      WOKWI_CLI_TOKEN:
         required: true
   workflow_dispatch: {}
 jobs:
@@ -35,7 +35,7 @@ jobs:
       - name: Run Test App in Wokwi Simulation
         working-directory: test_app
         env:
-          WOKWI_TOKEN: ${{ secrets.WOKWI_TOKEN }}
+          WOKWI_CLI_TOKEN: ${{ secrets.WOKWI_TOKEN }}
         run: |
           pytest \
             --junit-xml=./test_app_results_${{ matrix.espidf_target }}.xml \
