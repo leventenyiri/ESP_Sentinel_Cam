@@ -190,13 +190,12 @@ extern "C" void app_main(void) {
 
     ESP_LOGI(TAG, "[APP] Free memory before fb: %" PRIu32 " bytes",
              esp_get_free_heap_size());
-    const camera_fb_t *image = cam.get_fb();
+    cam.take_image();
     ESP_LOGI(TAG, "[APP] Free memory after fb: %" PRIu32 " bytes",
              esp_get_free_heap_size());
     // Publish the image to the MQTT topic
-    esp_mqtt_client_publish(client, "mqtt/rpi/image",
-                            reinterpret_cast<const char *>(image->buf),
-                            image->len, 2, 0);
+    esp_mqtt_client_publish(client, "mqtt/rpi/image", cam.get_image_data(),
+                            cam.get_image_size(), 2, 0);
     ESP_LOGI(TAG, "Message published!");
     cam.return_fb();
   }

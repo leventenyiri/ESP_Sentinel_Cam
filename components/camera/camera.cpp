@@ -43,13 +43,12 @@ Camera::Camera() {
   }
 }
 
-const camera_fb_t *Camera::get_fb() {
-  camera_fb_t *pic = esp_camera_fb_get();
-  if (!pic) {
+esp_err_t Camera::take_image() {
+  _fb = esp_camera_fb_get();
+  if (!_fb) {
     ESP_LOGE(TAG, "Failed to capture image"); // Exception handling
+    return ESP_FAIL;
   }
-  ESP_LOGI(TAG, "Image size is %d bytes", pic->len);
-  return pic;
+  ESP_LOGI(TAG, "Image size is %d bytes", _fb->len);
+  return ESP_OK;
 }
-
-void Camera::return_fb() { esp_camera_fb_return(_fb); } // Exception handling

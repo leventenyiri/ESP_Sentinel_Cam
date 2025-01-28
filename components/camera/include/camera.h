@@ -21,8 +21,12 @@
 class Camera {
 public:
   Camera();
-  const camera_fb_t *get_fb();
-  void return_fb();
+  esp_err_t take_image();
+  const char *get_image_data() {
+    return reinterpret_cast<const char *>(_fb->buf);
+  }
+  size_t get_image_size() { return _fb->len; }
+  void return_fb() { esp_camera_fb_return(_fb); }
 
 private:
   camera_config_t _config;
