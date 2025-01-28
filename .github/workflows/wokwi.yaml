@@ -21,7 +21,7 @@ jobs:
       - name: Build Test Application with ESP-IDF
         uses: espressif/esp-idf-ci-action@v1
         with:
-          esp_idf_version: "5.3.1"
+          esp_idf_version: "latest" # latest is the default version
           target: ${{ matrix.espidf_target }}
           path: 'test_app'
       - name: Install the Wokwi CLI
