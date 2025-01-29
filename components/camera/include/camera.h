@@ -21,6 +21,8 @@
 class Camera {
 public:
   Camera();
+  ~Camera() { esp_camera_fb_return(_fb); }
+
   esp_err_t take_image();
   const char *get_image_data() {
     return reinterpret_cast<const char *>(_fb->buf);
@@ -30,5 +32,5 @@ public:
 
 private:
   camera_config_t _config;
-  camera_fb_t *_fb;
+  camera_fb_t *_fb = nullptr;
 };
