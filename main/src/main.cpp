@@ -7,6 +7,8 @@
 /* #include "driver/i2c_master.h"
 #include "driver/temperature_sensor.h" */
 
+// #include <ArduinoJson.h>
+
 #ifndef portTICK_RATE_MS
 #define portTICK_RATE_MS portTICK_PERIOD_MS
 #endif
@@ -36,6 +38,9 @@ extern "C" void app_main(void) {
   wifi.init();
   wifi.connect(WIFI_SSID, WIFI_PASS);
 
+  // Disable lib logging else remote logging dies
+  esp_log_level_set("mqtt5_client", ESP_LOG_NONE);
+  esp_log_level_set("mqtt_client", ESP_LOG_NONE);
   MQTT mqtt;
   mqtt.start();
 

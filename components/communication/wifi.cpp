@@ -1,5 +1,7 @@
 #include "wifi.h"
 #include "esp_log.h"
+#include "esp_netif_sntp.h"
+#include "esp_sntp.h"
 #include "esp_wifi.h"
 #include "string.h"
 #include <cstring>
@@ -46,6 +48,16 @@ void Wifi::connect(const std::string &ssid, const std::string &password) {
 
   if (bits & WIFI_CONNECTED_BIT) {
     ESP_LOGI(TAG, "WiFi Connected, starting MQTT...");
+  }
+
+  // Set timezone to Budapest
+  setenv("TZ", "CET-1CEST,M3.5.0,M10.5.0/3", 1);
+  tzset();
+  // Configure SNTP
+  esp_sntp_config_t config = ESP_NETIF_SNTP_DEFAULT_CONFIG("pool.ntp.org");
+  esp_netif_sntp_init(&config);
+  if (esp_netif_sntp_sync_wait(pdMS_TO_TICKS(10000)) != ESP_OK) {
+    ESP_LOGE(TAG, "Failed to configure NTP server!"); // Error handling
   }
 }
 

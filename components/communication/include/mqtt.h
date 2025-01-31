@@ -1,7 +1,7 @@
 #include "mqtt_client.h"
 #include <string>
 
-// TODO: Implement error handling
+// TODO: Implement error handling and initialization
 class MQTT {
 public:
   MQTT();
@@ -9,6 +9,7 @@ public:
   void start();
   void publish(const char *topic, const char *data, size_t len);
   void subscribe(const std::string &topic);
+  static int remote_log_handler(const char *fmt, va_list args);
 
 private:
   /*
@@ -25,9 +26,12 @@ private:
                             int32_t event_id, void *event_data);
   static void log_error_if_nonzero(const char *message, int error_code);
 
-  esp_mqtt_client_config_t _config;
-  esp_mqtt_client_handle_t _client = nullptr;
-  std::string _config_topic;
-  std::string _ota_topic;
-  int _qos;
+  static esp_mqtt_client_config_t _config;
+  static esp_mqtt_client_handle_t _client;
+  static char _logBuff[256];
+  static std::string _configack_topic;
+  static std::string _configrecv_topic;
+  static std::string _log_topic;
+  static std::string _image_topic;
+  static int _qos;
 };
