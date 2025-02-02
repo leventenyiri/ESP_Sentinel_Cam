@@ -1,1 +1,1 @@
-void func(void);
+void dummy_storage_func();

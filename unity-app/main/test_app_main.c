@@ -1,9 +1,4 @@
-/*
- * SPDX-FileCopyrightText: 2015-2021 Espressif Systems (Shanghai) CO LTD
- *
- * SPDX-License-Identifier: Apache-2.0
- */
-
+// unity-app/main/test_app_main.c
 #include "unity.h"
 
 static void print_banner(const char* text)
