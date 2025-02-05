@@ -1,7 +1,7 @@
 ESP_SENTINEL_CAM
 ================
 
-**Documentation for the AITIA starling project.** Helodebug
+**Documentation for the AITIA starling project.** Helodebugnew
 
 .. toctree::
     :hidden:
