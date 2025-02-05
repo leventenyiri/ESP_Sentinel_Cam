@@ -29,6 +29,18 @@ jobs:
         run: |
           build-docs build
 
+          - name: List build contents
+          run: |
+            echo "Contents of HTML directory:"
+            ls -la docs/_build/en/generic/html/
+  
+      - name: Prepare for deployment
+        run: |
+          # Create .nojekyll file
+          touch docs/_build/en/generic/html/.nojekyll
+          # Ensure all files are readable
+          chmod -R a+r docs/_build/en/generic/html/
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
@@ -36,17 +48,3 @@ jobs:
           publish_dir: .docs\_build\en\generic\html
           force_orphan: true
           enable_jekyll: false
-
-      - name: Clean workspace
-        run: |
-          git clean -fdx
-            
-      - name: Debug - Check deployment
-        run: |
-          # Fetch and check gh-pages content
-          git fetch origin gh-pages
-          git checkout gh-pages
-          echo "Contents of gh-pages branch root:"
-          ls -la
-          echo "Checking for index.html:"
-          test -f index.html && echo "index.html exists" || echo "index.html is missing"
