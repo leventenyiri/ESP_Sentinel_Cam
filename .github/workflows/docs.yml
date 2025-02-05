@@ -29,10 +29,10 @@ jobs:
         run: |
           build-docs build
 
-          - name: List build contents
-          run: |
-            echo "Contents of HTML directory:"
-            ls -la docs/_build/en/generic/html/
+      - name: List build contents
+        run: |
+          echo "Contents of HTML directory:"
+          ls -la docs/_build/en/generic/html/
   
       - name: Prepare for deployment
         run: |
