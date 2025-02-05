@@ -35,3 +35,13 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: .docs\_build\en\generic\html
           force_orphan: true
+
+      - name: Debug - Check gh-pages branch
+        if: success()
+        run: |
+            git fetch origin gh-pages
+            git checkout gh-pages
+            echo "Contents of gh-pages branch:"
+            ls -la
+            echo "Current location:"
+            pwd
