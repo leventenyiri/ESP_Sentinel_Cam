@@ -35,13 +35,18 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: .docs\_build\en\generic\html
           force_orphan: true
+          enable_jekyll: false
 
-      - name: Debug - Check gh-pages branch
-        if: success()
+      - name: Clean workspace
         run: |
-            git fetch origin gh-pages
-            git checkout gh-pages
-            echo "Contents of gh-pages branch:"
-            ls -la
-            echo "Current location:"
-            pwd
+          git clean -fdx
+            
+      - name: Debug - Check deployment
+        run: |
+          # Fetch and check gh-pages content
+          git fetch origin gh-pages
+          git checkout gh-pages
+          echo "Contents of gh-pages branch root:"
+          ls -la
+          echo "Checking for index.html:"
+          test -f index.html && echo "index.html exists" || echo "index.html is missing"
