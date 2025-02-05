@@ -1,25 +1,36 @@
 from esp_docs.conf_docs import *  # noqa: F403,F401
-# from esp_docs.constants import TARGETS
 
-extensions += ['sphinx_copybutton',
-               # Needed as a trigger for running doxygen
-               'esp_docs.esp_extensions.dummy_build_system',
-               'esp_docs.esp_extensions.run_doxygen',
-               ]
+extensions += [
+    'sphinx_copybutton',
+    # Needed as a trigger for running doxygen
+    'esp_docs.esp_extensions.dummy_build_system',
+    'esp_docs.esp_extensions.run_doxygen',
+]
 
-# link roles config
-github_repo = 'espressif/esp-idf'
+# Base URLs and repository settings
+github_repo = 'ESP_Sentinel_Cam'
+github_user = 'leventenyiri'
+github_url = f'https://github.com/{github_user}/{github_repo}'
+BASE_URL = github_url + '/blob/main'
 
-# context used by sphinx_idf_theme
-html_context['github_user'] = 'espressif'
-html_context['github_repo'] = 'esp-docs'
+# Project information
+project = 'ESP_Sentinel_Cam'
+author = 'Levente Nyiri'
+copyright = '2024, ' + author
 
-# Extra options required by sphinx_idf_theme
-project_slug = 'esp-idf'
-versions_url = 'https://dl.espressif.com/dl/esp-idf/idf_versions.js'
+# Repository settings for ESP-Docs
+github_repo = 'ESP_Sentinel_Cam'
+html_context['github_user'] = 'leventenyiri'
+html_context['github_repo'] = github_repo
+html_context['github_version'] = 'main'
 
+# Base URL settings
+html_baseurl = f'https://leventenyiri.github.io/{github_repo}/'
+
+# Documentation settings
 languages = ['en']
-# idf_targets = TARGETS
-# idf_target = "esp32s3"
-
+language = 'en'
 todo_include_todos = True
+
+# Override problematic settings from esp_docs.conf_docs
+html_static_path = []  # Remove the _static path since it doesn't exist
