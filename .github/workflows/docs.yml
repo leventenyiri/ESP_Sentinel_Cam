@@ -27,7 +27,7 @@ jobs:
       - name: Build documentation
         working-directory: docs
         run: |
-          doxygen ../Doxyfile
+          doxygen Doxyfile
           build-docs build
 
       - name: Deploy to GitHub Pages
