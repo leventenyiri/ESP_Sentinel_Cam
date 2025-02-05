@@ -31,6 +31,3 @@ html_baseurl = f'https://leventenyiri.github.io/{github_repo}/'
 languages = ['en']
 language = 'en'
 todo_include_todos = True
-
-# Override problematic settings from esp_docs.conf_docs
-html_static_path = []  # Remove the _static path since it doesn't exist

@@ -37,13 +37,6 @@ jobs:
           doxygen Doxyfile
           build-docs -l en build
 
-      - name: Prepare for deployment
-        run: |
-          # Create .nojekyll file
-          touch docs/_build/en/generic/html/.nojekyll
-          # Create CNAME file if needed
-          echo "leventenyiri.github.io" > docs/_build/en/generic/html/CNAME
-
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
