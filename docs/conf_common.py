@@ -6,6 +6,8 @@ extensions += [
     'esp_docs.esp_extensions.run_doxygen',
 ]
 
+# HTML theme settings
+html_theme = 'sphinx_rtd_theme'
 
 # Project information
 project = 'ESP_Sentinel_Cam'
