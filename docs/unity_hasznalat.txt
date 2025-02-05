@@ -1,7 +1,0 @@
-ha változik az sdkconfig akkor be kell másolni a unity sdkconfigba
-ezeket meg át kell írni:
--> watchdogot ki kell kapcsolni CONFIG_ESP_INT_WDT=n, CONFIG_ESP_TASK_WDT_EN=n
--> heap figyelő CONFIG_HEAP_POISONING_COMPREHENSIVE=y
--> CONFIG_COMPILER_STACK_CHECK_MODE_STRONG=y
-
-cmake TEST_COMPONENTS-be kell rakni az új komponenst

@@ -1,0 +1,15 @@
+
+Traceback (most recent call last):
+  File "C:\Work\Starling_project\ESP_Sentinel_Cam\venv\Lib\site-packages\sphinx\cmd\build.py", line 285, in build_main
+    app = Sphinx(args.sourcedir, args.confdir, args.outputdir,
+                 args.doctreedir, args.builder, args.confoverrides, args.status,
+                 args.warning, args.freshenv, args.warningiserror,
+                 args.tags, args.verbosity, args.jobs, args.keep_going,
+                 args.pdb)
+  File "C:\Work\Starling_project\ESP_Sentinel_Cam\venv\Lib\site-packages\sphinx\application.py", line 153, in __init__
+    raise ApplicationError(__('Cannot find source directory (%s)') %
+                           self.srcdir)
+sphinx.errors.ApplicationError: Cannot find source directory (C:\test\test\zh_CN)
+
+[91mApplication error:[39;49;00m
+Cannot find source directory (C:\test\test\zh_CN)

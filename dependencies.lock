@@ -1,0 +1,26 @@
+dependencies:
+  bblanchon/arduinojson:
+    component_hash: 21b41e6cce335cefc142c457ceb50eb45621ff9ea6fd0a0ee349a642e48a47a3
+    dependencies: []
+    source:
+      registry_url: https://components.espressif.com/
+      type: service
+    version: 7.3.0
+  espressif/esp32-camera:
+    component_hash: c3eb05fbeeae884a23bed9b17d48d5f0da8872beadae0c0e747d2fbea6094f06
+    dependencies: []
+    source:
+      registry_url: https://components.espressif.com/
+      type: service
+    version: 2.0.15
+  idf:
+    source:
+      type: idf
+    version: 5.4.0
+direct_dependencies:
+- bblanchon/arduinojson
+- espressif/esp32-camera
+- idf
+manifest_hash: 34532917c999bb051d97f2f9b1ee479254a128e04b56203e6311bacec37f05ca
+target: esp32s3
+version: 2.0.0

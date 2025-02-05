@@ -1,6 +1,5 @@
-*.DS_Store
 .vscode
-**/build
-**/dependencies.lock
-**/secret.h
-**/managed_components
+venv
+build
+
+
