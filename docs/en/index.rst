@@ -8,4 +8,3 @@ ESP_SENTINEL_CAM
 
     documentation/index
     todolist
-
